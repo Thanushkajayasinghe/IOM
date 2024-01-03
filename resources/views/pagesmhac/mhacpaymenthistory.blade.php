@@ -1,0 +1,140 @@
+@extends('layout')
+
+@section('title', 'DIE Report')
+
+{{--@if($readWrite == 'true' || $readOnly == 'true')--}}
+
+@section('header')
+
+<style>
+
+</style>
+
+@endsection
+
+@section('content')
+
+
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold"></span>IOM -
+                Payment History Report</h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements d-none py-0 mb-3 mb-md-0">
+            <div class="breadcrumb">
+                <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+                <span class="breadcrumb-item active">Payment History Report</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+
+<!-- Page content -->
+<div class="page-content pt-0">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+        <!-- Content area -->
+        <div class="content">
+            <div class="card">
+                <div class="card-header">
+                <div class="row form-group">
+                  
+                        <div class="col-md-4">
+                            <label><span class="fa fa-hand-o-right"></span>&nbsp;&nbsp;Date</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control dppicker" readonly="" id="datePref">
+                                <div class="input-group-append">
+                                    <div class="input-group-text"
+                                        style="border: 1px solid rgb(221, 221, 221); padding: 0.4375rem 0.875rem;">
+                                        <span class="fa fa-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label><span class="fa fa-hand-o-right"></span>&nbsp;&nbsp;Country</label>
+                            <div class="form-group">
+                                <select id="country" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="0">All</option>
+                                    <option value="UK">UK</option>
+                                    <option value="CA">CA</option>
+                                    <option value="AU">AU</option>
+                                    <option value="NZ">NZ</option>
+                                    <option value="OT">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1 mt-4">
+                            <button type="button" class="btn btn-sm btn-primary" id="add"><span class="fa fa-search"></span></button>
+                        </div>
+
+                    </div>
+                 
+                    <div class="row form-group">
+                    <div class="col-md-12 form-group">
+                        <div id="tableContainer" class="table-responsive">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped text-center dataTable"
+                                    id="familyMemTable" style="">
+                                    <thead
+                                        style="background: linear-gradient(40deg,#45cafc,#303f9f) !important; color: white;">
+                                        <tr>
+                                            <th nowrap></th>
+                                            <th nowrap>Country</th>
+                                            <th nowrap>Date</th>
+                                            <th nowrap>Passport NO</th>
+                                            <th nowrap>Appoiment No</th>
+                                            <th nowrap>First Name</th>
+                                            <th nowrap>Last Name</th>
+                                            <th nowrap>Date Of Birth</th>
+                                            <th nowrap>Age</th>
+                                            <th nowrap>Gender</th>
+                                            <th nowrap>Amount</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="RTBody">
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <br><br>
+                    <div class="col-md-12 form-group text-center">
+                        {{--<button class="btn btn-lg btn-outline-warning" id="btnPrint" style="width: 15rem"><span
+                                class="fa fa-print"></span>&nbsp;Print--}}
+                            {{--</button>--}}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- /page content -->
+
+
+@endsection
+
+@section('scripts')
+<script>
+    var path = "{{url('/')}}";
+</script>
+<script src="{{asset('jsPagesMhac/MhacPaymentHistroy.js')}}" type="text/javascript"></script>
+@endsection
+
+
+{{--@endif--}}

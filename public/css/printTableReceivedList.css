@@ -1,0 +1,79 @@
+body {
+    background: rgb(204,204,204); 
+}
+
+.page {  
+    width: calc(210 *  3.779528px);
+    height: calc(297 *  3.779528px);
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: white;
+    display: block;
+    border: 2px solid;
+    font-family: 'Calibri (Body)';
+}
+
+.pageL {  
+    width: calc(297 *  3.779528px);
+    height: calc(210 *  3.779528px);
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: white;
+    display: block;
+    border: 2px solid;
+    font-family: 'Calibri (Body)';
+}
+
+.page:not(:nth-child(1)), .pageL:not(:nth-child(1)){  
+    margin: 5px auto;
+    page-break-before: always;
+}
+
+
+.col-md-1 {width:8%;  float:left;}
+.col-md-2 {width:16%; float:left;}
+.col-md-3 {width:25%; float:left;}
+.col-md-4 {width:33%; float:left;}
+.col-md-5 {width:42%; float:left;}
+.col-md-6 {width:50%; float:left;}
+.col-md-7 {width:58%; float:left;}
+.col-md-8 {width:66%; float:left;}
+.col-md-9 {width:75%; float:left;}
+.col-md-10{width:83%; float:left;}
+.col-md-11{width:92%; float:left;}
+.col-md-12{width:100%; float:left;}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #ddd !important;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 8px;
+    font-size: 11px;
+}
+
+* {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact !important;
+}
+
+.table-condensed > tbody > tr > td{
+    padding: 0px !important;
+    text-align: center !important;
+}
+
+.table-condensed.Landscape > tbody > tr > td{
+    padding: 0px !important;
+    text-align: center !important;
+}
+
+th{
+    text-align: center !important;
+}
+
+table:not(.Landscape) tbody tr td{
+    height: 40px;
+}

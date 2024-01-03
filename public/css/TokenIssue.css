@@ -1,0 +1,40 @@
+@page {
+    size: 12.7cm 7.62cm;
+    margin: 0;
+}
+
+body {
+    background: rgb(204,204,204);
+    font-family: "Times New Roman", Times, serif;
+    line-height: normal;
+}
+
+.page {
+    width: 12.7cm;
+    height: 7.62cm;
+    margin: 0px auto;
+    background: white;
+    display: block;
+    border: 2px solid;
+    /*padding: 10px 20px;*/
+    page-break-after: always;
+}
+
+tr th{
+    color: black;
+}
+
+input{
+    pointer-events: none;
+}
+
+/*.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 8px;
+}*/
+
+* {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact !important;
+}

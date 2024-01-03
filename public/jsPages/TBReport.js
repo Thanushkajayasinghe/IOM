@@ -1,0 +1,104 @@
+$(document).ready(function () {
+
+
+
+
+
+    $('#datePref').on('change', function () {
+
+
+        var date = $(this).val();
+
+        $.ajax({
+            url: 'RecommendationLoadData',
+            type: 'post',
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                function: 'LoadDataTBReport',
+                date: date
+            },
+            success: function (data) {
+
+                var html = "";
+                var no = 0;
+
+                $(data.result).each(function (key, val) {
+
+                    var dob = val.DateOfBirth;
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+
+                    no++;
+                    html += '<tr>';
+                    html += '<td></td>';
+                    html += '<td style="display: none">' + val.tbId + '</td>';
+                    html += '<td>' + date + '</td>';
+                    html += '<td>' + val.FirstName + '</td>';
+                    html += '<td>' + val.LastName + '</td>';
+                    html += '<td>' + val.reg_passport + '</td>';
+                    html += '<td>' + age + '</td>';
+                    html += '<td>' + val.Gender + '</td>';
+                    html += '<td>' + val.CountryOfOrigin + '</td>';
+                    html += '<td>' + val.CdAddress + '</td>';
+                    html += '<td>' + val.SponsorName + '</td>';
+                    html += '<td>' + val.SponsorAddress + '</td>';
+                    if (val.cm_exams_results) {
+                        html += '<td>Done - ' + val.cm_exams_results + '</td>';
+                    } else {
+                        html += '<td>Not Done</td>';
+                    }
+                    if (val.genexpert) {
+                        html += '<td>Done - ' + val.genexpert + '</td>';
+                    } else {
+                        html += '<td>Not Done</td>';
+                    }
+                    if (val.liquidculture) {
+                        html += '<td>Done - ' + val.liquidculture + '</td>';
+                    } else {
+                        html += '<td>Not Done</td>';
+                    }
+                    html += '</tr>';
+                });
+
+                $('#RTBody').html("");
+                $('#RTBody').html(html);
+            }, complete: function () {
+
+                loadDataTable();
+            }
+        });
+
+    });
+
+
+    //Data Table Plugin Initiate
+    function loadDataTable() {
+
+
+        var table1 = $('.dataTable').DataTable({
+            "pageLength": 25,
+            "columnDefs": [{
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            }],
+            dom: 'Blfrtip',
+            buttons: [
+                'csv', 'excel'
+            ],
+            "order": [[1, 'asc']]
+        });
+
+        table1.on('order.dt search.dt', function () {
+            table1.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
+    }
+
+
+});
