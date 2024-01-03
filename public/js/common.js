@@ -7,7 +7,7 @@ $('.logout').click(function () {
         imageWidth: 100,
         imageHeight: 100,
         imageAlt: 'Custom image',
-//        type: 'warning',
+        //        type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -36,11 +36,18 @@ $('.logout').click(function () {
 });
 
 function wait() {
-    $('#WaitBox').modal({show: true});
+    $('#WaitBox').modal({ show: true });
 }
 
 function closewait() {
     $('#WaitBox').modal('hide');
+}
+
+function getUrl() {
+    let currentURL = window.location.href;
+    let pathname = new URL(currentURL).pathname;
+    let parts = pathname.split('/').filter(part => part !== '');
+    return parts[0];
 }
 
 
@@ -157,7 +164,7 @@ function validate(parent) {
 
         if ($(this).hasClass('selectTo')) {
 
-            if (value == null||value == "") {
+            if (value == null || value == "") {
                 is_form_valid = false;
                 var error = $(this).attr('error');
                 $(this).next().next().html(error).show(1000);

@@ -88,10 +88,10 @@
             <table style="width: 100%; margin-top: 25px;">
                 <tr>
                     <td width="25%" rowspan="6" style="border: solid 1px black ; ">
-                        @if($data->image = null || $data->image = "")
+                        @if($data->image == null || $data->image == "")
                         <img src="{{asset('images/blank-user.jpg')}}" style="height: 140px; position: relative; border: 2px solid black;">
                         @else
-                        <img src="{{ asset('mhacPhotobooth/'. $data->image) }}" style="height: 150px; width: 170px; position: relative; border: 2px solid black;">
+                        <img src="{{ asset('mhacPhotobooth/'.$data->image) }}" style="height: 150px; width: 170px; position: relative; border: 2px solid black;">
                         @endif
                     </td>
                     <td width="20%" style="border: solid 1px black; border-right: 2px solid white; margin-left: 15px;">

@@ -80,7 +80,7 @@
             <tr width="100%">
                 <td width="25%" rowspan="6" style="border: solid 1px black ; ">
                     <center>
-                        @if($data->image = null || $data->image = "")
+                        @if($data->image == null || $data->image == "")
                             <img src="{{asset('images/blank-user.jpg')}}"
                                  style="height: 140px;display: inline-block;position: relative;border: 2px solid black;">
                         @else
@@ -272,7 +272,7 @@
                                 data-fouc="">
                         @endif
                         <br>
-                        <label><span class="fa fa-users"></span>SHCG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><span class="fa fa-users"></span>SHCG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         @if($data2->shcg_result != '')
                             @if($data2->shcg_result == 'Negative')
                                     <label for="chkbox_005"><span
@@ -311,7 +311,7 @@
                         @endif
                         <br>
                         {{----------------------------------------------------------------------------------------}}
-                        <label><span class="fa fa-users"></span>Urine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><span class="fa fa-users"></span>Urine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         @if($data2->urine_result != '')
                             <label for="chkbox_005"><span class="fa fa-users">{{$data2->urine_result}}</span></label>
                         @else

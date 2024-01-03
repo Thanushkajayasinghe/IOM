@@ -34,7 +34,7 @@ $('#btnSelectAppointment').on('click', function () {
     var dateArray = getDates(new Date(dateSelected), new Date(nextDate));
 
     $.ajax({
-        url: '/IOM/HolidayCalenderLoadDataApi',
+        url: `/${getUrl()}/HolidayCalenderLoadDataApi`,
         type: 'post',
         dataType: 'json',
         headers: {
@@ -274,7 +274,7 @@ $(document).on('click', '.ui-state-default', function () {
         const noOfMembers = MemberCount;
 
         $.ajax({
-            url: '/IOM/LoadTimeAvailableMhac',
+            url: `/${getUrl()}/LoadTimeAvailableMhac`,
             type: 'POST',
             dataType: 'json',
             headers: {
@@ -557,7 +557,7 @@ $('#btnSave').on('click', function () {
     };
 
     $.ajax({
-        url: '/IOM/SaveMakeAppointment',
+        url: `/${getUrl()}/SaveMakeAppointment`,
         type: 'post',
         dataType: 'json',
         headers: {

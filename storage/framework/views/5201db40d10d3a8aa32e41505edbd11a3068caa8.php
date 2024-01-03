@@ -389,7 +389,7 @@
                                     </div>
 
                                     <div class="col-md-3 form-group">
-                                        <label><span class="fa fa-road"></span>&nbsp;&nbsp;Address Line 1</label>
+                                        <label><span class="fa fa-road"></span>&nbsp;&nbsp;Address Line 2</label>
                                         <input type="text" class="form-control" id="txtMainAddLine2">
                                     </div>
 
