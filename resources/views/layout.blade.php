@@ -1565,16 +1565,6 @@
                 </a>
             </li>
             @endif
-            @if(in_array('96',$pages))
-            <li data-menu="calendar">
-                <a href="{{url('/MhacPendingTokens')}}" id="icon-stairs-up1">
-                    <span>
-                        <img src="{{asset('images/menuIcon/tokenissue.png')}}" style="width: 55px; height: 50px;" />
-                    </span>
-                    <p>Mhac Pending Tokens</p>
-                </a>
-            </li>
-            @endif
             @if(in_array('97',$pages))
             <li data-menu="calendar">
                 <a href="{{url('/MhacPendingTokens')}}" id="icon-stairs-up1">
