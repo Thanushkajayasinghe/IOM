@@ -235,7 +235,7 @@ class ConsultationController extends Controller
             $appointment = $request->appointment;
             
             $appdetails = DB::table('mhac_appointments')
-            ->select('passport_no', 'gender', 'first_name', 'last_name', 'dob', 'address1', 'address2', 'city', 'postal_code', 'contact_no_land', 'contact_no_mobile',)
+            ->select('passport_no', 'gender', 'first_name', 'last_name', 'dob', 'address1', 'address2', 'city', 'postal_code', 'contact_no_land', 'contact_no_mobile')
             ->where('appointment_no', $appointment)
             ->get();
 
@@ -556,7 +556,7 @@ class ConsultationController extends Controller
                     ? ((date("Y") - $birthDate[0]) - 1)
                     : (date("Y") - $birthDate[0]));
 
-
+// dd($memberDetails);
         
             $pdf = PDF::loadView('pagesmhac.Certificate', compact('memberDetails' , 'age', 'results'));
 
