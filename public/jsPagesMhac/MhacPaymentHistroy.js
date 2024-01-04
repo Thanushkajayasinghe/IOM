@@ -33,7 +33,7 @@ $(document).ready(function(){
         var todayDate = yyyy + "/" + mm + "/" + dd;
     
         $.ajax({
-            url: '/IOM/LoadPaymentHistoryURL',
+            url: `/${getUrl()}/LoadPaymentHistoryURL`,
             type: 'post',
             dataType: 'json',
             headers: {

@@ -10,7 +10,7 @@ if (appno != null) {
     appNox = appno;
 
     $.ajax({
-        url: '/IOM/dropUpdateMainUserAppointmentNoNZ',
+        url: `/${getUrl()}/dropUpdateMainUserAppointmentNoNZ`,
         type: 'get',
         dataType: 'json',
         headers: {
@@ -23,7 +23,7 @@ if (appno != null) {
 
             $("#dropMainUserAppointmentNo").select2({
                 ajax: {
-                    url: "/IOM/dropUpdateMainUserAppointmentNoNZ",
+                    url: `/${getUrl()}/dropUpdateMainUserAppointmentNoNZ`,
                     delay: 250,
                     processResults: processData
                 },
@@ -54,7 +54,7 @@ if (appno != null) {
 
 $('#dropMainUserAppointmentNo').select2({
     ajax: {
-        url: '/IOM/dropUpdateMainUserAppointmentNoNZ',
+        url: `/${getUrl()}/dropUpdateMainUserAppointmentNoNZ`,
         type: 'GET',
         dataType: 'json',
         delay: 250,
@@ -104,7 +104,7 @@ function loadformdatal(appoimentNo) {
     Clear();
 
     $.ajax({
-        url: '/IOM/searchAppointmentNoWiseDetailsNZ',
+        url: `/${getUrl()}/searchAppointmentNoWiseDetailsNZ`,
         type: 'post',
         dataType: 'json',
         headers: {
@@ -377,7 +377,7 @@ $('#btnUpdate').on('click', function () {
     };
 
     $.ajax({
-        url: '/IOM/SaveUpdateAppointmentNZ',
+        url: `/${getUrl()}/SaveUpdateAppointmentNZ`,
         type: 'post', 
         dataType: 'json',
         headers: {

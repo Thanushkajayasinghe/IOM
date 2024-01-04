@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
     function loadAppoinmentNo(x) {
         $.ajax({
-            url: '/IOM/CancelAndResheduleLoadAppoimnet',
+            url: `/${getUrl()}/CancelAndResheduleLoadAppoimnet`,
             type: 'post',
             dataType: 'json',
             async: false,
@@ -42,7 +42,7 @@ $(document).ready(function () {
     });
     function loadPassportNo(x) {
         $.ajax({
-            url: '/IOM/CancelAndResheduleLoadPassport',
+            url: `/${getUrl()}/CancelAndResheduleLoadPassport`,
             type: 'post',
             dataType: 'json',
             headers: {
@@ -81,7 +81,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: '/IOM/CancelAndResheduleVerify',
+            url: `/${getUrl()}/CancelAndResheduleVerify`,
             type: 'post',
             dataType: 'json',
             headers: {
@@ -99,7 +99,7 @@ $(document).ready(function () {
                     $('#btnReschedule').addClass('Vefify');
 
                     $.ajax({
-                        url: '/IOM/CancelAndResheduleLoadData',
+                        url: `/${getUrl()}/CancelAndResheduleLoadData`,
                         type: 'post',
                         dataType: 'json',
                         headers: {
@@ -158,7 +158,7 @@ $(document).ready(function () {
         var date = $(this).val();
 
         $.ajax({
-            url: '/IOM/CancelAndResheduleLoadTime',
+            url: `/${getUrl()}/CancelAndResheduleLoadTime`,
             type: 'post',
             dataType: 'json',
             headers: {
@@ -289,7 +289,7 @@ $(document).ready(function () {
                     const dateReschedule = $('#txtRescheduleDate').val();
 
                     $.ajax({
-                        url: '/IOM/CancelAndSetReshedule',
+                        url: `/${getUrl()}/CancelAndSetReshedule`,
                         type: 'post',
                         dataType: 'json',
                         headers: {
@@ -308,7 +308,7 @@ $(document).ready(function () {
                                 var email = $('#txtEmail').val();
 
                                 $.ajax({
-                                    url: '/IOM/CancelAndResheduleEmail',
+                                    url: `/${getUrl()}/CancelAndResheduleEmail`,
                                     type: 'POST',
                                     dataType: 'json',
                                     headers: {
@@ -384,7 +384,7 @@ $(document).ready(function () {
                     var appointmentNo = $('#txtAppointmentNo').val();
     
                     $.ajax({
-                        url: '/IOM/CancelAndResheduleSetCancel',
+                        url: `/${getUrl()}/CancelAndResheduleSetCancel`,
                         type: 'post',
                         dataType: 'json',
                         headers: {
@@ -402,7 +402,7 @@ $(document).ready(function () {
                                 var email = $('#txtEmail').val();
     
                                 $.ajax({
-                                    url: '/IOM/CancelAndResheduleCancelEmail',
+                                    url: `/${getUrl()}/CancelAndResheduleCancelEmail`,
                                     type: 'POST',
                                     dataType: 'json',
                                     headers: {

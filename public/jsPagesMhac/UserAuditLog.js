@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     function loadData() {
         $.ajax({
-            url: "/IOM/LoadCurrentAuditLogData",
+            url: `/${getUrl()}/LoadCurrentAuditLogData`,
             type: "POST",
             dataType: "json",
             headers: {
@@ -45,7 +45,7 @@ $(document).ready(function () {
         table.destroy();
 
         $.ajax({
-            url: "/IOM/LoadAuditLogData",
+            url: `/${getUrl()}/LoadAuditLogData`,
             type: "POST",
             dataType: "json",
             headers: {

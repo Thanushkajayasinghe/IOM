@@ -4,19 +4,19 @@ $(document).ready(function () {
     var bar1 = new ProgressBar.Line("#pendingTokenProgress", {
         strokeWidth: 2,
         easing: "easeInOut",
-        duration: 3000,
+        duration: 20000,
         color: "#FFEA82",
         trailColor: "#eee",
         trailWidth: 1,
         svgStyle: {
             width: "100%",
-            height: "100%"
+            height: "100%",
         },
         from: {
-            color: "#FFEA82"
+            color: "#FFEA82",
         },
         to: {
-            color: "#ED6A5A"
+            color: "#ED6A5A",
         },
         step: (state, bar) => {
             bar.path.setAttribute("stroke", state.color);
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     function getPendingTokens() {
         $.ajax({
-            url: "/IOM/MhacPhlebotomyLoadData",
+            url: `/${getUrl()}/MhacPhlebotomyLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -57,7 +57,7 @@ $(document).ready(function () {
     $("#notAvailable").on("click", function () {
         if (str.length > 2) {
             $.ajax({
-                url: "/IOM/MhacPhlebotomyLoadData",
+                url: `/${getUrl()}/MhacPhlebotomyLoadData`,
                 type: "post",
                 dataType: "json",
                 headers: {
@@ -77,6 +77,8 @@ $(document).ready(function () {
                     $("#currentTokenNo").text("-");
                     $("#appbody").html("");
                     arr = [];
+                    $(".showHideDiv").hide();
+                    getRecallListTokens();
                 },
             });
         } else {
@@ -84,13 +86,12 @@ $(document).ready(function () {
         }
     });
 
-
     //==========================================================================================================
 
     $("#next").on("click", function () {
         str = "Yes";
         $.ajax({
-            url: "/IOM/MhacPhlebotomyLoadData", // URL to your backend endpoint
+            url: `/${getUrl()}/MhacPhlebotomyLoadData`, // URL to your backend endpoint
             type: "post",
             dataType: "json",
             headers: {
@@ -125,19 +126,19 @@ $(document).ready(function () {
     var bar2 = new ProgressBar.Line("#callAgainTokenProgress", {
         strokeWidth: 2,
         easing: "easeInOut",
-        duration: 10000,
+        duration: 40000,
         color: "#FFEA82",
         trailColor: "#eee",
         trailWidth: 1,
         svgStyle: {
             width: "100%",
-            height: "100%"
+            height: "100%",
         },
         from: {
-            color: "#00838f"
+            color: "#00838f",
         },
         to: {
-            color: "#BBBA82"
+            color: "#BBBA82",
         },
         step: (state, bar) => {
             bar.path.setAttribute("stroke", state.color);
@@ -157,7 +158,7 @@ $(document).ready(function () {
 
     function getRecallListTokens() {
         $.ajax({
-            url: "/IOM/MhacPhlebotomyLoadData",
+            url: `/${getUrl()}/MhacPhlebotomyLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -182,8 +183,9 @@ $(document).ready(function () {
     //=========== Recall =============================================
 
     $("#recall").on("click", function () {
+        str = "Yes";
         $.ajax({
-            url: "/IOM/MhacPhlebotomyLoadData",
+            url: `/${getUrl()}/MhacPhlebotomyLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -198,10 +200,10 @@ $(document).ready(function () {
                 $.each(data.result, function (key, val) {
                     $("#appNotAvblBody").append(
                         '<tr class="appNotAvblNum"> <td attr-no="' +
-                        val.phlebotomy_status +
-                        '">' +
-                        val.token_no +
-                        "</td> </tr>"
+                            val.phlebotomy_status +
+                            '">' +
+                            val.token_no +
+                            "</td> </tr>"
                     );
                 });
             },
@@ -218,11 +220,13 @@ $(document).ready(function () {
             $(this).addClass("clickedRow").addClass("prevClicked");
 
             $.ajax({
-                url: "/IOM/MhacPhlebotomyLoadData",
+                url: `/${getUrl()}/MhacPhlebotomyLoadData`,
                 type: "post",
                 dataType: "json",
                 headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
                 },
                 data: {
                     command: "data",
@@ -233,7 +237,7 @@ $(document).ready(function () {
                     $("#AppointmentNo").val(data[0]);
                     $("#PassportNo").val(data[1]);
                     $("#Age").val(age);
-                    $('#genderTxtHi').val(data[3]);
+                    $("#genderTxtHi").val(data[3]);
 
                     var imgPath = "";
                     if (data[4] != null && data[4] != "") {
@@ -267,7 +271,7 @@ $(document).ready(function () {
         $("#clearingID").show();
         $("#currentTokenNo").text($this.find("td").text());
         $.ajax({
-            url: "/IOM/MhacPhlebotomyLoadData",
+            url: `/${getUrl()}/MhacPhlebotomyLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -282,7 +286,7 @@ $(document).ready(function () {
                 var result = data.result;
                 if (result != 0) {
                     $.ajax({
-                        url: "/IOM/MhacPhlebotomyLoadData",
+                        url: `/${getUrl()}/MhacPhlebotomyLoadData`,
                         type: "post",
                         dataType: "json",
                         headers: {
@@ -299,7 +303,7 @@ $(document).ready(function () {
                             $("#appbody").html("");
                             $.each(data, function (key, val) {
                                 $.ajax({
-                                    url: "/IOM/MhacPhlebotomyLoadData",
+                                    url: `/${getUrl()}/MhacPhlebotomyLoadData`,
                                     type: "post",
                                     dataType: "json",
                                     headers: {
@@ -316,15 +320,15 @@ $(document).ready(function () {
                                         if (data.result == true) {
                                             $("#appbody").append(
                                                 '<tr class="appNum rowSaved"> <td>' +
-                                                val +
-                                                "</td> </tr>"
+                                                    val +
+                                                    "</td> </tr>"
                                             );
                                             arr.splice($.inArray(val, arr), 1);
                                         } else {
                                             $("#appbody").append(
                                                 '<tr class="appNum"> <td>' +
-                                                val +
-                                                "</td> </tr>"
+                                                    val +
+                                                    "</td> </tr>"
                                             );
                                         }
                                     },
@@ -358,7 +362,6 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.value) {
                 if (validate("#clearingID")) {
-
                     var HivCheck = "false";
                     var MalariaCheck = "false";
                     var FilariaCheck = "false";
@@ -408,11 +411,14 @@ $(document).ready(function () {
                         FilariaCheck == false ||
                         MalariaCheck == false
                     ) {
-                        Swal("Please Check HIV, Filaria and Malaria", "", "error");
-
+                        Swal(
+                            "Please Check HIV, Filaria and Malaria",
+                            "",
+                            "error"
+                        );
                     } else {
                         $.ajax({
-                            url: "/IOM/MhacPhlebotomyLoadData",
+                            url: `/${getUrl()}/MhacPhlebotomyLoadData`,
                             type: "post",
                             dataType: "json",
                             headers: {
@@ -442,27 +448,39 @@ $(document).ready(function () {
                                     confirmButtonText: "OK",
                                 }).then((result) => {
                                     if (result.value) {
-                                        $(".modalBarcode").modal(
-                                            "show"
+                                        $(".modalBarcode").modal("show");
+
+                                        barcode = data.barcode.trim();
+                                        tokenBar = data.token;
+                                        indexBar = data.index;
+
+                                        JsBarcode(
+                                            "#barcodeContainer",
+                                            barcode,
+                                            {
+                                                fontSize: 24,
+                                                height: 75,
+                                                marginTop: -80,
+                                            }
                                         );
 
-                                        barcode = (data.barcode).trim();
-                                        tokenBar = (data.token);
-                                        indexBar = (data.index);
+                                        $("#barcodeContainer").attr(
+                                            "height",
+                                            "90px"
+                                        );
+                                        $("#barcodeContainer").attr(
+                                            "viewBox",
+                                            "0 0 354 3"
+                                        );
 
-                                        JsBarcode("#barcodeContainer", barcode, {
-                                            fontSize: 24,
-                                            height: 75,
-                                            marginTop: -80,
-                                        });
-
-                                        $("#barcodeContainer").attr("height", "90px");
-                                        $("#barcodeContainer").attr("viewBox", "0 0 354 3");
-
-                                        var content = $("#barcodeContainer g").html();
+                                        var content = $(
+                                            "#barcodeContainer g"
+                                        ).html();
 
                                         var gender = "";
-                                        if ($('#genderTxtHi').val() == "Female") {
+                                        if (
+                                            $("#genderTxtHi").val() == "Female"
+                                        ) {
                                             gender = "F";
                                         } else {
                                             gender = "M";
@@ -473,40 +491,53 @@ $(document).ready(function () {
                                             "" +
                                             currentdate.getFullYear() +
                                             "/" +
-                                            (currentdate.getMonth() +
-                                                1) +
+                                            (currentdate.getMonth() + 1) +
                                             "/" +
                                             currentdate.getDate() +
                                             " " +
                                             (
-                                                "00" +
-                                                currentdate.getHours()
+                                                "00" + currentdate.getHours()
                                             ).substr(-2) +
                                             ":" +
                                             (
-                                                "00" +
-                                                currentdate.getMinutes()
+                                                "00" + currentdate.getMinutes()
                                             ).substr(-2) +
                                             ":" +
                                             (
-                                                "00" +
-                                                currentdate.getSeconds()
+                                                "00" + currentdate.getSeconds()
                                             ).substr(-2);
 
-                                        $('#barcodeContainer g').html(content + '<text style="font: 20px monospace; font-weight: bold;" text-anchor="middle" x="112" y="122">' + gender + ' ' + $('#ageTxtHi').val() + 'Y T' + tokenBar + ' ' + indexBar + '</text>' +
-                                            '<text style="font: 20px monospace; font-weight: bold;" text-anchor="middle" x="112" y="140">' + datetime + '</text>'
+                                        $("#barcodeContainer g").html(
+                                            content +
+                                                '<text style="font: 20px monospace; font-weight: bold;" text-anchor="middle" x="112" y="122">' +
+                                                gender +
+                                                " " +
+                                                $("#ageTxtHi").val() +
+                                                "Y T" +
+                                                tokenBar +
+                                                " " +
+                                                indexBar +
+                                                "</text>" +
+                                                '<text style="font: 20px monospace; font-weight: bold;" text-anchor="middle" x="112" y="140">' +
+                                                datetime +
+                                                "</text>"
                                         );
 
                                         $("#AppointmentNo").val("");
                                         $("#PassportNo").val("");
                                         $("#Age").val("");
                                         $("#shcg_check").prop("checked", false);
-                                        $("#urine_check").prop("checked", false);
+                                        $("#urine_check").prop(
+                                            "checked",
+                                            false
+                                        );
                                         barcode = "";
                                         trr = 0;
 
                                         $("#appbody tr.clickedRow.prevClicked")
-                                            .removeClass("clickedRow prevClicked")
+                                            .removeClass(
+                                                "clickedRow prevClicked"
+                                            )
                                             .addClass("rowSaved");
 
                                         $(".showHideDiv").hide();
@@ -516,9 +547,7 @@ $(document).ready(function () {
                                 //location.reload();
                                 arr = [];
                             },
-                            complete: function () {
-
-                            },
+                            complete: function () {},
                         });
                     }
                 } //
@@ -526,10 +555,15 @@ $(document).ready(function () {
         });
     });
 
-    $('#btnPrintBarcodeCon').on('click', function () {
-
-        var DocumentContainer = document.getElementById('modalContainerPrintable');
-        var WindowObject = window.open('', "PrintWindow", "width=500,height=200");
+    $("#btnPrintBarcodeCon").on("click", function () {
+        var DocumentContainer = document.getElementById(
+            "modalContainerPrintable"
+        );
+        var WindowObject = window.open(
+            "",
+            "PrintWindow",
+            "width=500,height=200"
+        );
         WindowObject.document.writeln(DocumentContainer.innerHTML);
         WindowObject.document.close();
         WindowObject.focus();

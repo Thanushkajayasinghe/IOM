@@ -4,7 +4,7 @@ $(document).ready(function() {
         var appid = $('#AppointmentNo').val();
         if (PassportNo != "" || appid != "") {
              $.ajax({
-                url: '/IOM/VerifyURL',
+                url: `/${getUrl()}/VerifyURL`,
                 type: 'post',
                 dataType: 'json',
                 headers: {
@@ -85,7 +85,7 @@ $(document).ready(function() {
                     } else {
     
                         $.ajax({
-                            url: '/IOM/SaveURLPaymentCounter',
+                            url: `/${getUrl()}/SaveURLPaymentCounter`,
                             type: 'post',
                             dataType: 'json',
                             headers: {

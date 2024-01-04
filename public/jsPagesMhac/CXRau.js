@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     function getPendingTokens() {
         $.ajax({
-            url: "/IOM/MhacCXRLoadData",
+            url: `/${getUrl()}/MhacCXRLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     function getRecallListTokens() {
         $.ajax({
-            url: "/IOM/MhacCXRLoadData",
+            url: `/${getUrl()}/MhacCXRLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -98,7 +98,7 @@ $(document).ready(function () {
     $("#next").on("click", function () {
         str = "Yes";
         $.ajax({
-            url: "/IOM/MhacCXRLoadData", // URL to your backend endpoint
+            url: `/${getUrl()}/MhacCXRLoadData`, // URL to your backend endpoint
             type: "post",
             dataType: "json",
             headers: {
@@ -133,7 +133,7 @@ $(document).ready(function () {
     $("#notAvailable").on("click", function () {
         if (str.length > 2) {
             $.ajax({
-                url: "/IOM/MhacCXRLoadData",
+                url: `/${getUrl()}/MhacCXRLoadData`,
                 type: "post",
                 dataType: "json",
                 headers: {
@@ -153,6 +153,8 @@ $(document).ready(function () {
                     $("#currentTokenNo").text("-");
                     $("#appbody").html("");
                     arr = [];
+                    $(".showHideDiv").hide();
+                    getRecallListTokens();
                 },
             });
         } else {
@@ -163,8 +165,9 @@ $(document).ready(function () {
     //=========== Recall Not Available =============================================
 
     $("#recall").on("click", function () {
+        str = "Yes";
         $.ajax({
-            url: "/IOM/MhacCXRLoadData",
+            url: `/${getUrl()}/MhacCXRLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -202,7 +205,7 @@ $(document).ready(function () {
             $("tr.appNum").removeClass("clickedRow");
             $(this).addClass("clickedRow").addClass("prevClicked");
             $.ajax({
-                url: "/IOM/MhacCXRLoadData",
+                url: `/${getUrl()}/MhacCXRLoadData`,
                 type: "post",
                 dataType: "json",
                 headers: {
@@ -217,7 +220,7 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data.result == false) {
                         $.ajax({
-                            url: "/IOM/MhacCXRLoadData",
+                            url: `/${getUrl()}/MhacCXRLoadData`,
                             type: "post",
                             dataType: "json",
                             headers: {
@@ -287,7 +290,7 @@ $(document).ready(function () {
         $("#currentTokenNo").text($this.find("td").text());
 
         $.ajax({
-            url: "/IOM/MhacCXRLoadData",
+            url: `/${getUrl()}/MhacCXRLoadData`,
             type: "post",
             dataType: "json",
             headers: {
@@ -302,7 +305,7 @@ $(document).ready(function () {
                 var result = data.result;
                 if (result != 0) {
                     $.ajax({
-                        url: "/IOM/MhacCXRLoadData",
+                        url: `/${getUrl()}/MhacCXRLoadData`,
                         type: "post",
                         dataType: "json",
                         headers: {
@@ -319,7 +322,7 @@ $(document).ready(function () {
                             $("#appbody").html("");
                             $.each(data, function (key, val) {
                                 $.ajax({
-                                    url: "/IOM/MhacCXRLoadData",
+                                    url: `/${getUrl()}/MhacCXRLoadData`,
                                     type: "post",
                                     dataType: "json",
                                     headers: {
@@ -485,7 +488,7 @@ $(document).ready(function () {
                     var today = yyyy + "" + mm + "" + dd;
 
                     $.ajax({
-                        url: "/IOM/MhacCXRLoadData",
+                        url: `/${getUrl()}/MhacCXRLoadData`,
                         type: "post",
                         dataType: "json",
                         headers: {

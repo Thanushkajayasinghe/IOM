@@ -4,7 +4,7 @@ $(document).ready(function() {
         var appid = $('#AppointmentNo').val();
         if (PassportNo != "" || appid != "") {
              $.ajax({
-                url: '/IOM/ReprintVerifyURL',
+                url: `/${getUrl()}/ReprintVerifyURL`,
                 type: 'post',
                 dataType: 'json',
                 headers: {
@@ -86,7 +86,7 @@ $(document).ready(function() {
                     } else {
     
                         $.ajax({
-                            url: '/IOM/ReprintURLPaymentCounter',
+                            url: `/${getUrl()}/ReprintURLPaymentCounter`,
                             type: 'post',
                             dataType: 'json',
                             headers: {
