@@ -132,7 +132,7 @@ class CXRController extends Controller
 
             DB::table('mhac_temp_table')
                 ->where('token_no', $token)
-                ->update(['cxr_status' => 3], );
+                ->update(['cxr_status' => 3]);
 
             return response()->json(['Done']);
             
